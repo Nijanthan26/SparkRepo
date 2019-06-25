@@ -6,7 +6,7 @@ import org.apache.kafka.clients.producer.{KafkaProducer, ProducerConfig, Produce
 import org.apache.spark.{SparkConf, SparkContext}
 import org.slf4j.LoggerFactory
 
-object producer {
+object kafkaProducer {
 
   def main(args:Array[String]): Unit = {
 
@@ -19,7 +19,7 @@ object producer {
     pros.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,"org.apache.kafka.common.serialization.StringSerializer")
     pros.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,"org.apache.kafka.common.serialization.StringSerializer")
     pros.put(ProducerConfig.ACKS_CONFIG,"all")
-   // pros.put(ProducerConfig.LINGER_MS_CONFIG,1)
+    // pros.put(ProducerConfig.LINGER_MS_CONFIG,1)
 
     val conf = new SparkConf().setAppName("CSV to Kafka").setMaster("local[*]")
     val sc = new SparkContext(conf)
